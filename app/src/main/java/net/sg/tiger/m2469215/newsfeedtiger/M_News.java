@@ -1,10 +1,12 @@
 package net.sg.tiger.m2469215.newsfeedtiger;
 
 /**
+ * Model representing the data we use
  * Created by M2469215 on 30/05/2017.
  */
 
 public class M_News {
+    //region Variables
     /**
      * Article's title
      */
@@ -24,14 +26,16 @@ public class M_News {
      * Link to the article on the web
      */
     private String link;
+    //endregion
 
-
+    //region Constructors
     /**
      * Complete constructor for an article
-     * @param title Article's title
+     *
+     * @param title       Article's title
      * @param publication Article's publication date
-     * @param body Article's body
-     * @param link Article's link
+     * @param body        Article's body
+     * @param link        Article's link
      */
     public M_News(String title, String publication, String body, String link) {
         this.title = title;
@@ -42,9 +46,10 @@ public class M_News {
 
     /**
      * Constructor for an article without title
+     *
      * @param publication Article's publication date
-     * @param body Article's body
-     * @param link Article's link
+     * @param body        Article's body
+     * @param link        Article's link
      */
     public M_News(String publication, String body, String link) {
         this.publication = publication;
@@ -52,9 +57,12 @@ public class M_News {
         this.link = link;
         this.title = "";
     }
+    //endregion
 
+    //region Getters/Setters
     /**
      * Getter for the title
+     *
      * @return Article's title
      */
     public String getTitle() {
@@ -63,6 +71,7 @@ public class M_News {
 
     /**
      * Getter for the publication's date (format mm/dd/yyyy)
+     *
      * @return Article's publication date
      */
     public String getPublication() {
@@ -71,6 +80,7 @@ public class M_News {
 
     /**
      * Getter for the article's body
+     *
      * @return Article's body
      */
     public String getBody() {
@@ -79,9 +89,11 @@ public class M_News {
 
     /**
      * Getter for the article's link
+     *
      * @return Article's link
      */
     public String getLink() {
         return link;
     }
+    //endregion
 }
