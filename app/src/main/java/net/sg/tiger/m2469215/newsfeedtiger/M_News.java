@@ -1,11 +1,14 @@
 package net.sg.tiger.m2469215.newsfeedtiger;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Model representing the data we use
  * Created by M2469215 on 30/05/2017.
  */
 
-public class M_News {
+public class M_News implements Parcelable {
     //region Variables
     /**
      * Article's title
@@ -29,6 +32,7 @@ public class M_News {
     //endregion
 
     //region Constructors
+
     /**
      * Complete constructor for an article
      *
@@ -45,21 +49,17 @@ public class M_News {
     }
 
     /**
-     * Constructor for an article without title
+     * Constructor called when creating the object from a Parcel
      *
-     * @param publication Article's publication date
-     * @param body        Article's body
-     * @param link        Article's link
+     * @param in Parcel giving the data
      */
-    public M_News(String publication, String body, String link) {
-        this.publication = publication;
-        this.body = body;
-        this.link = link;
-        this.title = "";
+    public M_News(Parcel in) {
+        readFromParcel(in);
     }
     //endregion
 
     //region Getters/Setters
+
     /**
      * Getter for the title
      *
@@ -95,5 +95,58 @@ public class M_News {
     public String getLink() {
         return link;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * Writing objects to the parcel
+     *
+     * @param dest  Parcel in which we need to write
+     * @param flags Flags
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.body);
+        dest.writeString(this.title);
+        dest.writeString(this.link);
+        dest.writeString(this.publication);
+    }
+
+    /**
+     * Function used when constructing an object from a Parcel
+     *
+     * @param in
+     */
+    private void readFromParcel(Parcel in) {
+        this.body = in.readString();
+        this.title = in.readString();
+        this.link = in.readString();
+        this.publication = in.readString();
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        /**
+         * Method called when reading Parcellable data from an intent
+         * @param source Parcel source
+         * @return An instance of {M_News}
+         */
+        @Override
+        public M_News createFromParcel(Parcel source) {
+            return new M_News(source);
+        }
+
+        /**
+         * Method called when reading an array of Parcellable data
+         * @param size Siez of the array
+         * @return An array of {M_News}
+         */
+        @Override
+        public M_News[] newArray(int size) {
+            return new M_News[size];
+        }
+    };
     //endregion
 }
