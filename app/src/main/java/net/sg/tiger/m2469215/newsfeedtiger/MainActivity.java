@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -26,9 +28,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    //region Variables
     private Context ctx = this;
 
-    //region Variables
     public static final String EXTRA_INTENT_SHOW_ONE_DOC = "net.sg.tiger.ShowOneDoc";
 
     /**
@@ -68,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
      * Layout used to make refreshing possible
      */
     private SwipeRefreshLayout mySwipe;
+
+    /**
+     * Loading icon
+     */
+    private ProgressBar myPrg;
     //endregion
 
     //region Methods
@@ -125,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                         actualPos += count;
                         mySwipe.setRefreshing(false);
+                        myPrg.setVisibility(View.INVISIBLE);
                     }
                 }, new Response.ErrorListener() {
                     /**
@@ -138,17 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         MySingleton.getInstance(this).addToRequestQueue(jsReq);
-    }
 
-    /**
-     * Method handling a click on our main_button
-     * Sending an HTTP request to our REST API and getting the news - storing it in a List
-     * And displaying it on the Activity View
-     *
-     * @param view Reference to the clicked widget
-     */
-    public void getList(View view) {
-        getData(increment);
     }
 
     /**
@@ -216,6 +214,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        myPrg = (ProgressBar) findViewById(R.id.myPrg);
 
         ((Activity) ctx).overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 

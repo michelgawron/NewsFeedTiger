@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/cardview_dark_background</item>
+        <item name="colorPrimaryDark">@color/appNtofiBar</item>
+        <item name="colorAccent">@color/radioSelect</item>
+        <item name="android:navigationBarColor">@color/appNtofiBar</item>
+    </style>
+</resources>

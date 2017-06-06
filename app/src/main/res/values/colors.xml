@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="gray">#be9e9e9e</color>
     <color name="blue">#be00013f</color>
+    <color name="appNtofiBar">#212121</color>
+    <color name="radioSelect">#2c3acb</color>
 </resources>
