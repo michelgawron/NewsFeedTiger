@@ -95,6 +95,7 @@ public class M_News implements Parcelable {
     public String getLink() {
         return link;
     }
+    //endregion
 
     @Override
     public int describeContents() {
@@ -118,7 +119,7 @@ public class M_News implements Parcelable {
     /**
      * Function used when constructing an object from a Parcel
      *
-     * @param in
+     * @param in Parcel given when retrieving an Intent
      */
     private void readFromParcel(Parcel in) {
         this.body = in.readString();
@@ -127,6 +128,9 @@ public class M_News implements Parcelable {
         this.publication = in.readString();
     }
 
+    /**
+     * Creator used whenever retrieving data from an intent
+     */
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         /**
          * Method called when reading Parcellable data from an intent
@@ -140,7 +144,7 @@ public class M_News implements Parcelable {
 
         /**
          * Method called when reading an array of Parcellable data
-         * @param size Siez of the array
+         * @param size Size of the array
          * @return An array of {M_News}
          */
         @Override
@@ -148,5 +152,4 @@ public class M_News implements Parcelable {
             return new M_News[size];
         }
     };
-    //endregion
 }
