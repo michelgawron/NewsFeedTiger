@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
      * WebApp URL
      */
     private static String url =
-            "http://tigernode.azurewebsites.net/PUTFUNCTIONHERE/PUTSKIPHERE/PUTLIMITHERE";
+            "http://ec2-18-217-30-247.us-east-2.compute.amazonaws.com:3000" +
+                    "/PUTFUNCTIONHERE/PUTSKIPHERE/PUTLIMITHERE";
 
     /**
      * Query entered by the user - default value is an empty string
